@@ -1,6 +1,6 @@
 package de.paul2708.memory.game;
 
-import de.paul2708.memory.util.ItemManager;
+import de.paul2708.memory.util.Util;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -16,8 +16,8 @@ public class Card {
         this.item = item;
     }
 
-    public boolean isPair(Card card) {
-        return ItemManager.isSame(item, card.getItem());
+    public void setSlot(int slot) {
+        this.slot = slot;
     }
 
     public int getSlot() {
@@ -26,5 +26,16 @@ public class Card {
 
     public ItemStack getItem() {
         return item;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Card) {
+            Card card = (Card) obj;
+
+            return Util.isSame(item, card.getItem());
+        }
+
+        return false;
     }
 }

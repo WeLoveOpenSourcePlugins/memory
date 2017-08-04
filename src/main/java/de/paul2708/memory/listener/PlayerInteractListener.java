@@ -1,9 +1,7 @@
 package de.paul2708.memory.listener;
 
 import de.paul2708.memory.Memory;
-import de.paul2708.memory.game.GameManager;
 import de.paul2708.memory.game.Queue;
-import de.paul2708.memory.util.Constants;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -19,34 +17,33 @@ public class PlayerInteractListener implements Listener {
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
-        Player p = e.getPlayer();
+        Player player = e.getPlayer();
         Block block = e.getClickedBlock();
 
-        if(e.getAction() != Action.RIGHT_CLICK_BLOCK) return;
-        if(block == null || block.getType() != Material.NOTE_BLOCK) return;
-        e.setCancelled(true);
-
-        Queue queue = Memory.getQueue();
-
-        if(GameManager.getInstance().getGame(p) != null) {
-            p.sendMessage(Constants.TAG + "Es läuft bereits noch ein Spiel mit dir.");
+        if (e.getAction() != Action.RIGHT_CLICK_BLOCK ||
+                block == null || block.getType() != Material.NOTE_BLOCK) {
             return;
         }
-        if (queue.contains(p)) {
-            p.sendMessage(Constants.TAG + "§cDu bist bereits in der Warteschlange.");
+
+        e.setCancelled(true);
+
+        Queue queue = Memory.getGameManager().getQueue();
+
+        if (queue.contains(player)) {
+            player.sendMessage(Memory.getMessageFile().getMessage("queue.already_in"));
         } else {
-            queue.add(p);
+            queue.add(player);
 
             if (queue.getSize() == 2) {
                 Player first = queue.getPlayer(0);
 
-                GameManager.getInstance().createGame(first, p);
+                Memory.getGameManager().createGame(first, player);
 
                 queue.clear();
                 return;
             }
 
-            p.sendMessage(Constants.TAG + "§aDu wurdest der Warteschlange hinzugefügt!");
+            player.sendMessage(Memory.getMessageFile().getMessage("queue.added"));
         }
     }
 }
