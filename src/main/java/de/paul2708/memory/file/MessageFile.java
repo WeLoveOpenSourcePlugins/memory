@@ -48,6 +48,9 @@ public class MessageFile {
             if (first) {
                 createDefaultValues();
             }
+
+            // Check updates
+            checkUpdates();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -65,7 +68,7 @@ public class MessageFile {
         configuration.set("game.again", "%tag% &6%player% can take another card.");
         configuration.set("game.again_player", "%tag% &6You can take another card.");
 
-        configuration.set("queue.already_in", "%tag% &cYour are already in the queue.");
+        configuration.set("queue.leave", "%tag% &cYou left the queue.");
         configuration.set("queue.added", "%tag% &aYou joined the queue. &7Waiting for player..");
 
         configuration.set("result.draw", "%tag% &eDraw! - Nobody won.");
@@ -75,6 +78,19 @@ public class MessageFile {
             configuration.save(configFile);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void checkUpdates() {
+        if (configuration.getString("queue.leave") == null) {
+            configuration.set("queue.leave", "%tag% &cYou left the queue.");
+            configuration.set("queue.already_in", null);
+
+            try {
+                configuration.save(configFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
