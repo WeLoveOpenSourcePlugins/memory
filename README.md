@@ -10,15 +10,21 @@ because our plugin brings variety in your serverlobby.
 * works out of the box
 * varying themes
 ## Setup
-* Put the [`Memory.jar`](https://www.spigotmc.org/resources/memory-minigame-1-8-1-12-free-to-use.45082/download?version=176339) in your plugin folder
+* Put the [`Memory.jar`](https://www.spigotmc.org/resources/45082/download?version=176527) in your plugin folder
 * Start the server and wait until the message file was created
 * Customize the messages (messages.yml)
 * Start you're server again and connect
 ## How to play
-Right-click a noteblock to join the queue. If a second player joins the queue, the game will start.
+Right-click the customized block (default: noteblock) to join the queue or use /memory. If a second player joins the queue, the game will start.
 Leave the game by closing the inventory.
 
 ## Configuration
+##### config.yml
+----------------
+```
+join_per_block: false
+join_block_id: '25:0'
+```
 ##### messages.yml
 ----------------
 ```
@@ -33,7 +39,7 @@ game:
   again: '%tag% &6%player% can take another card.'
   again_player: '%tag% &6You can take another card.'
 queue:
-  already_in: '%tag% &cYour are already in the queue.'
+  leave: '%tag% &cYou left the queue.'
   added: '%tag% &aYou joined the queue. &7Waiting for player..'
 result:
   draw: '%tag% &eDraw! - Nobody won.'
