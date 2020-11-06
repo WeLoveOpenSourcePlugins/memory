@@ -23,7 +23,6 @@ public class GameManager {
 
     private boolean joinPerBlock;
     private Material material;
-    private byte subId;
 
     public GameManager() {
         this.games = new ArrayList<>();
@@ -32,14 +31,7 @@ public class GameManager {
         this.queue = new Queue();
 
         this.joinPerBlock = Memory.getConfigFile().canJoinPerBlock();
-        String sId = Memory.getConfigFile().getBlockId();
-        if (sId.contains(":")) {
-            this.material = Material.getMaterial(Integer.valueOf(sId.split(":")[0]));
-            this.subId = Byte.valueOf(sId.split(":")[1]);
-        } else {
-            this.material = Material.getMaterial(Integer.valueOf(sId));
-            this.subId = (byte) 0;
-        }
+        this.material = Material.valueOf(Memory.getConfigFile().getMaterialType());
 
         // Themes
         themes.add(new ClassicTheme());
@@ -51,9 +43,9 @@ public class GameManager {
     }
 
     public Game getGame(Player p) {
-        for(Game all : games) {
-            for(Player gPlayer : all.getPlayers()) {
-                if(gPlayer.getName().equals(p.getName())) {
+        for (Game all : games) {
+            for (Player gPlayer : all.getPlayers()) {
+                if (gPlayer.getName().equals(p.getName())) {
                     return all;
                 }
             }
@@ -81,9 +73,5 @@ public class GameManager {
 
     public Material getMaterial() {
         return material;
-    }
-
-    public byte getSubId() {
-        return subId;
     }
 }

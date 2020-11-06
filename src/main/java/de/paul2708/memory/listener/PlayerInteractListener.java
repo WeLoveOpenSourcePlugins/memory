@@ -25,8 +25,7 @@ public class PlayerInteractListener implements Listener {
         if (!Memory.getGameManager().canJoinPerBlock()) {
             return;
         }
-        if (block.getType() == Memory.getGameManager().getMaterial() &&
-                block.getData() == Memory.getGameManager().getSubId()) {
+        if (block.getType() == Memory.getGameManager().getMaterial()) {
             e.setCancelled(true);
 
             Queue queue = Memory.getGameManager().getQueue();
