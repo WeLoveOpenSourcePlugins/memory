@@ -18,20 +18,18 @@ public class ItemBuilder {
     private String name;
     private int amount;
     private Material type;
-    private int subID;
     private List<String> description;
     private HashMap<Enchantment, Integer> enchantments;
 
     public ItemBuilder() {
         this.amount = 1;
-        this.subID = 0;
         this.description = new ArrayList<>();
         this.enchantments = new HashMap<>();
     }
 
     @SuppressWarnings("deprecation")
     public ItemStack getItem() {
-        ItemStack item = new ItemStack(type.getId(), amount, (short) subID);
+        ItemStack item = new ItemStack(type, amount);
         ItemMeta meta = item.getItemMeta();
         if(name != null) meta.setDisplayName(name);
         if(description.size() != 0) meta.setLore(description);
@@ -69,17 +67,6 @@ public class ItemBuilder {
 
     public ItemBuilder type(Material type) {
         this.type = type;
-        return this;
-    }
-
-    @SuppressWarnings("deprecation")
-    public ItemBuilder id(int id) {
-        this.type = Material.getMaterial(id);
-        return this;
-    }
-
-    public ItemBuilder subID(int subID) {
-        this.subID = subID;
         return this;
     }
 }

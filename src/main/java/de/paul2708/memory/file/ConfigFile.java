@@ -2,6 +2,7 @@ package de.paul2708.memory.file;
 
 import de.paul2708.memory.Memory;
 import de.paul2708.memory.util.Constants;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
@@ -54,7 +55,7 @@ public class ConfigFile {
 
     private void createDefaultValues() {
         configuration.set("join_per_block", true);
-        configuration.set("join_block_id", "25:0");
+        configuration.set("join_block", Material.NOTE_BLOCK.toString().toUpperCase());
 
         try {
             configuration.save(configFile);
@@ -67,7 +68,7 @@ public class ConfigFile {
         return configuration.getBoolean("join_per_block");
     }
 
-    public String getBlockId() {
-        return configuration.getString("join_block_id");
+    public String getMaterialType() {
+        return configuration.getString("join_block");
     }
 }

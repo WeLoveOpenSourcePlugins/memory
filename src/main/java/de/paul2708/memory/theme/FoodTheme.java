@@ -38,20 +38,20 @@ public class FoodTheme implements Theme {
                 new ItemBuilder().name("Roher Kabeljau").type(Material.RAW_FISH).getItem(),
         };*/
         return new ItemStack[] {
-                new ItemBuilder().id(297).getItem(),
-                new ItemBuilder().id(412).getItem(),
-                new ItemBuilder().id(392).getItem(),
+                new ItemBuilder().type(Material.BREAD).getItem(),
+                new ItemBuilder().type(Material.COOKED_RABBIT).getItem(),
+                new ItemBuilder().type(Material.POTATO).getItem(),
                 new ItemBuilder().type(Material.COOKED_BEEF).getItem(),
-                new ItemBuilder().id(391).getItem(),
-                new ItemBuilder().id(354).getItem(),
-                new ItemBuilder().id(349).subID(2).getItem(),
-                new ItemBuilder().id(260).getItem(),
-                new ItemBuilder().id(424).getItem(),
-                new ItemBuilder().id(393).getItem(),
-                new ItemBuilder().id(320).getItem(),
-                new ItemBuilder().id(357).getItem(),
-                new ItemBuilder().id(349).subID(3).getItem(),
-                new ItemBuilder().type(Material.RAW_FISH).getItem(),
+                new ItemBuilder().type(Material.CARROT).getItem(),
+                new ItemBuilder().type(Material.CAKE).getItem(),
+                new ItemBuilder().type(Material.TROPICAL_FISH).getItem(),
+                new ItemBuilder().type(Material.APPLE).getItem(),
+                new ItemBuilder().type(Material.COOKED_MUTTON).getItem(),
+                new ItemBuilder().type(Material.BAKED_POTATO).getItem(),
+                new ItemBuilder().type(Material.COOKED_PORKCHOP).getItem(),
+                new ItemBuilder().type(Material.COOKIE).getItem(),
+                new ItemBuilder().type(Material.PUFFERFISH).getItem(),
+                new ItemBuilder().type(Material.ENCHANTED_GOLDEN_APPLE).getItem(),
         };
     }
 }

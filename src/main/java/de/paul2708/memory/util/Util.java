@@ -12,12 +12,6 @@ public class Util {
     public static final Random random = new Random();
 
     public static boolean isSame(ItemStack item, ItemStack copy) {
-        if (item.getType() == copy.getType()) {
-            if (item.getDurability() == copy.getDurability()) {
-                return true;
-            }
-        }
-
-        return false;
+        return item != null && item.isSimilar(copy);
     }
 }

@@ -29,8 +29,7 @@ public class InventoryClickListener implements Listener {
             if (game != null) {
                 e.setCancelled(true);
 
-                if (e.getClickedInventory() == null || e.getClickedInventory().getTitle() == null ||
-                        !e.getClickedInventory().getTitle().contains(player.getName())) {
+                if (e.getClickedInventory() == null || !e.getView().getTitle().contains(player.getName())) {
                     return;
                 }
                 if (e.getAction() == InventoryAction.PICKUP_ALL || e.getAction() == InventoryAction.PICKUP_HALF) {
