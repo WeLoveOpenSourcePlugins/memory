@@ -31,8 +31,11 @@ public class ItemBuilder {
     public ItemStack getItem() {
         ItemStack item = new ItemStack(type, amount);
         ItemMeta meta = item.getItemMeta();
+        if (meta == null) {
+            return item;
+        }
         if(name != null) meta.setDisplayName(name);
-        if(description.size() != 0) meta.setLore(description);
+        if(description.isEmpty()) meta.setLore(description);
         if(enchantments.size() != 0) {
             for(Map.Entry<Enchantment, Integer> entry : enchantments.entrySet()) {
                 Enchantment key = entry.getKey();

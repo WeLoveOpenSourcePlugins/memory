@@ -9,6 +9,10 @@ import java.util.Random;
  */
 public class Util {
 
+    private Util() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static final Random random = new Random();
 
     public static boolean isSame(ItemStack item, ItemStack copy) {

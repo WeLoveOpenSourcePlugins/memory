@@ -21,16 +21,16 @@ import org.bukkit.inventory.ItemStack;
 public class GameClickListener implements Listener {
 
     @EventHandler
-    public void onClick(GameClickEvent e) {
-        Player player = e.getPlayer();
-        Game game = e.getGame();
+    public void onClick(GameClickEvent gameClickEvent) {
+        Player player = gameClickEvent.getPlayer();
+        Game game = gameClickEvent.getGame();
         Profile profile = game.getProfile(player);
 
-        ItemStack item = e.getClickedItem();
-        int slot = e.getSlot();
+        ItemStack item = gameClickEvent.getClickedItem();
+        int slot = gameClickEvent.getSlot();
 
         // Check item
-        if (item == null || item.getType() == null || item.getType() == Material.AIR) {
+        if (item == null || item.getType() == Material.AIR) {
             return;
         }
 
@@ -47,10 +47,8 @@ public class GameClickListener implements Listener {
         // Handle Click
         Card card = game.getCardBySlot(slot);
 
-        if (profile.hasCard()) {
-            if (profile.getLastCard().getSlot() == slot) {
-                return;
-            }
+        if (profile.hasCard() && profile.getLastCard().getSlot() == slot) {
+            return;
         }
 
         game.setClickAble(false);

@@ -8,6 +8,10 @@ import org.bukkit.inventory.ItemStack;
  */
 public class Constants {
 
+    private Constants() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static final String TAG = "§8[§eMemory§8] §7";
 
     public static final ItemStack COVER = new ItemBuilder().name("?").type(Material.WHITE_STAINED_GLASS_PANE).getItem();
