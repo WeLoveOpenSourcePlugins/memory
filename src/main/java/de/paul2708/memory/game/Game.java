@@ -17,7 +17,8 @@ import java.util.*;
  */
 public class Game {
 
-    private Player first, second;
+    private Player first;
+    private Player second;
 
     private List<Profile> profiles;
     private Player turn;
@@ -200,7 +201,7 @@ public class Game {
 
         for (int i = 0; i < inventory.getSize(); i++) {
             ItemStack item = inventory.getItem(i);
-            if (item == null || item.getType() == null || item.getType() == Material.AIR) {
+            if (item == null || item.getType() == Material.AIR) {
                 inventory.setItem(i, Constants.COVER);
 
                 for (Card card : cards) {

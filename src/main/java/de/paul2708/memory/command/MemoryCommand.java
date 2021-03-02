@@ -16,30 +16,30 @@ public class MemoryCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (sender instanceof Player) {
-            Player player = (Player) sender;
-            Queue queue = Memory.getGameManager().getQueue();
-
-            if (queue.contains(player)) {
-                queue.remove(player);
-                player.sendMessage(Memory.getMessageFile().getMessage("queue.leave"));
-            } else {
-                queue.add(player);
-
-                if (queue.getSize() == 2) {
-                    Player first = queue.getPlayer(0);
-
-                    Memory.getGameManager().createGame(first, player);
-
-                    queue.clear();
-                    return true;
-                }
-
-                player.sendMessage(Memory.getMessageFile().getMessage("queue.added"));
-            }
-        } else {
+        if (!(sender instanceof Player)) {
             Memory.getInstance().log(Constants.TAG + "§cYou cannot run this command from console.");
+            return false;
         }
+        Player player = (Player) sender;
+        Queue queue = Memory.getGameManager().getQueue();
+
+        if (queue.contains(player)) {
+            queue.remove(player);
+            player.sendMessage(Memory.getMessageFile().getMessage("queue.leave"));
+            return true;
+        }
+        queue.add(player);
+
+        if (queue.getSize() == 2) {
+            Player first = queue.getPlayer(0);
+
+            Memory.getGameManager().createGame(first, player);
+
+            queue.clear();
+            return true;
+        }
+
+        player.sendMessage(Memory.getMessageFile().getMessage("queue.added"));
 
         return true;
     }
