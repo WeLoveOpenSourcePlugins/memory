@@ -1,0 +1,43 @@
+specVersion: 1
+type: plugin
+name: Memory
+authors:
+  - Paul2708
+supportedPlatforms:
+  - spigot
+supportedGameVersions: 1.8 - 1.16.5
+category: game
+introduction:
+  de: Das bekannte Minispiel Memory für Minecraft
+  en: The well known minigame memory for Minecraft
+description:
+  de: |
+    # Spielen
+    Rechtsklicke einen bestimmten Block (Standard: Notenblock) um der Warteschlange beizutreten oder nutze `/memory`.
+    Sobald ein zweiter Spieler der Warteschlange beitritt, wird das Spiel gestartet.
+    Das Spiel kann über das Schließen des Spiel-Inventars verlassen werden.
+  en: |
+    # How to play
+    Right-click the customized block (default: noteblock) to join the queue or use `/memory`.
+    If a second player joins the queue, the game will start.
+    Leave the game by closing the inventory.
+installation:
+  de: |
+    - Herunterladen der Plugin-Datei
+    - Ablegen der Datei im Plugins-Ordner
+    - Anpassen der Nachrichten in der `messages.yml`-Datei
+    - Server neustarten
+  en: |
+    - Put the memory.jar in your plugin folder
+    - Start the server and wait until the message file got created
+    - Customize the messages (messages.yml)
+    - Restart your server and connect
+tags:
+  - minigame
+  - lobby
+images:
+  - https://i.ibb.co/Y809qz9/Screenshot-1.png
+  - https://i.ibb.co/FxpHYgs/Screenshot-2.png
+icon: https://m.media-amazon.com/images/I/91xrNm06+hL._AC_SL1500_.jpg
+videoSources:
+  - https://www.youtube.com/watch?v=-aDJW23rj88
