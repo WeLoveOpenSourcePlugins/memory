@@ -4,7 +4,7 @@ authors:
   - Paul2708
 supportedPlatforms:
   - spigot
-supportedGameVersions: ^1.8.0
+supportedGameVersions: 1.8 - 1.16.5
 category: game
 introduction:
   de: Das bekannte Minispiel Memory für Minecraft
