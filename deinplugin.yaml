@@ -1,4 +1,5 @@
 specVersion: 1
+type: plugin
 name: Memory
 authors:
   - Paul2708
